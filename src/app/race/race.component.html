@@ -1,0 +1,9 @@
+<h2>Races</h2>
+<button (click)="refreshRaces()">Refresh the races list</button>
+<div *ngIf="races.length > 0; else empty">
+  <h2>Races ({{races.length}})</h2>
+  <ul>
+    <li *ngFor="let race of races">{{ race.name }}</li>
+  </ul>
+</div>
+<ng-template #empty><h2>No Races</h2></ng-template>
