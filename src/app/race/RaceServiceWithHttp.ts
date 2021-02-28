@@ -11,6 +11,6 @@ export class RaceServiceWithHttp{
   }
 
   list(id: number){
-    return this.http.get('localhost:8080/api/v1/students/' + id);
+    return this.http.get(`http://localhost:8080/api/v1/students/${id}`, { observe: 'response' });
   }
 }
