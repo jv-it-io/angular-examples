@@ -1,11 +1,11 @@
 export interface IPoney {
-studentId?: number;
-studentName?: string;
+  poneyId?: number;
+  poneyName?: string;
 }
 
 export class Poney implements IPoney {
 constructor(
-  public studentId?: number,
-  public studentName?: string
+  public poneyId?: number,
+  public poneyName?: string
 ) {}
 }

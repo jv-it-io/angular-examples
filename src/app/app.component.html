@@ -1,6 +1,13 @@
 <app-ponies></app-ponies>
 <button (click)="list()">Get Poney 1</button>
-Poney(1) : {{poney.studentId}} {{poney.studentName}}
+Poney(1) : {{race.raceId}} {{race.city}}
+
+<button (click)="getAll()">Get All</button>
+
+<h2>Races ({{races.length}})</h2>
+<ul>
+  <li *ngFor="let race of races; index as i">{{i}} - {{ race.city }}</li>
+</ul>
 
 <!--&lt;!&ndash; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * &ndash;&gt;-->
 <!--&lt;!&ndash; * * * * * * * * * * * The content below * * * * * * * * * * * &ndash;&gt;-->

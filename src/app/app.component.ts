@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import {RaceService} from "./race/RaceService.service";
+import {Component} from '@angular/core';
 import {RaceServiceWithHttp} from "./race/RaceServiceWithHttp";
 import {HttpResponse} from "@angular/common/http";
-import {IPoney, Poney} from "./model/Poney";
+import {IRace, Race} from "./model/Race";
 
 @Component({
   //****init version
@@ -24,23 +23,34 @@ export class AppComponent {
   title = 'example-app';
   numberOfUsers = 145;
   user: any ;
-  poney: IPoney = {};
+  race: IRace = {};
+  races: IRace[] = [];
 
 
   list(): void{
-    this.raceService.list(1).subscribe(
-      (res: HttpResponse<IPoney>) => {
+    this.raceService.list('1').subscribe(
+      (res: HttpResponse<IRace>) => {
         if (res) {
-           this.poney = res.body ? res.body : new Poney();
+           this.race = res.body ? res.body : new Race();
         }
       },
-      () => (this.poney = {})
+      () => (this.race = {})
     );
     // return this.poney;
     // return this.raceService.list(1);
   }
 
-  onNewRace(): void {
+  getAll(): void {
+    this.raceService.findAll().subscribe(
+      (res: HttpResponse<IRace[]>) =>
+      {
+        if(res){
+          this.races = res.body ? res.body : [];
+        }
+      },
+      () => (this.races = [])
 
+
+    )
   }
 }
